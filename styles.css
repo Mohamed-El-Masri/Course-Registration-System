@@ -1,0 +1,391 @@
+:root {
+    --primary-color: #1a237e;
+    --secondary-color: #283593;
+    --accent-color: #3949ab;
+    --hover-color: #3f51b5;
+    --text-color: #212121;
+    --light-text: #fafafa;
+    --border-color: #e0e0e0;
+    --shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    --transition: all 0.3s ease;
+}
+
+body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    background: linear-gradient(135deg, #f5f7ff 0%, #ffffff 100%);
+    color: var(--text-color);
+    line-height: 1.6;
+    margin: 0;
+    padding: 30px;
+}
+
+.container {
+    max-width: 1400px;
+    margin: auto;
+    padding: 40px;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    box-shadow: var(--shadow);
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.header h1 {
+    font-size: 3em;
+    color: var(--primary-color);
+    font-weight: 800;
+    text-transform: uppercase;
+}
+
+.header h1 i {
+    font-size: 0.8em;
+    margin-right: 15px;
+    color: var(--accent-color);
+}
+
+.header h2 {
+    font-size: 1.5em;
+    color: var(--secondary-color);
+    font-weight: 500;
+}
+
+.class-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 40px;
+    padding: 20px;
+}
+
+.class-card {
+    background: white;
+    border-radius: 15px;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+    border: 2px solid transparent;
+    overflow: hidden;
+}
+
+.class-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--accent-color);
+}
+
+.class-header {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: var(--light-text);
+    padding: 20px;
+    border-radius: 13px 13px 0 0;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.class-header i {
+    font-size: 24px;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 10px;
+    border-radius: 10px;
+    backdrop-filter: blur(5px);
+}
+
+.class-header h3 {
+    margin: 0;
+    font-size: 1.3em;
+    font-weight: 600;
+}
+
+.class-content {
+    padding: 25px;
+}
+
+.attributes h4, .methods h4 {
+    color: var(--primary-color);
+    font-size: 1.1em;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.attributes h4::before {
+    content: '🔑';
+    font-size: 1.2em;
+}
+
+.methods h4::before {
+    content: '⚙️';
+    font-size: 1.2em;
+}
+
+.class-card ul {
+    list-style: none;
+    padding: 0;
+}
+
+.class-card li {
+    padding: 8px 12px;
+    margin-bottom: 8px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    font-family: 'Fira Code', monospace;
+    font-size: 0.9em;
+    display: flex;
+    align-items: center;
+    transition: var(--transition);
+}
+
+.class-card li:hover {
+    background: #f0f2f5;
+    transform: translateX(5px);
+}
+
+.visibility-icon {
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+    text-align: center;
+    margin-right: 8px;
+    border-radius: 4px;
+    font-weight: bold;
+    font-size: 0.9em;
+    color: var(--accent-color);
+}
+
+.constraints {
+    margin-top: 20px;
+    padding: 15px;
+    background: #fff3e0;
+    border-radius: 8px;
+    border-left: 4px solid #ff9800;
+}
+
+.constraints h4 {
+    color: #f57c00;
+    margin: 0 0 10px 0;
+    font-size: 1em;
+}
+
+.constraints p {
+    margin: 5px 0;
+    font-size: 0.9em;
+    color: #795548;
+}
+
+/* تحسين خطوط العلاقات */
+.relationship-arrow {
+    position: absolute;
+    pointer-events: none;
+    transform-origin: center;
+}
+
+.relationship-arrow::before {
+    content: '';
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    border: 2px solid var(--accent-color);
+    border-right: 0;
+    border-bottom: 0;
+    transform: rotate(45deg);
+}
+
+.relationship-label {
+    position: absolute;
+    background: white;
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-size: 0.85em;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+/* تحسين مظهر السكروول */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--accent-color);
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--primary-color);
+}
+
+/* تصميم متجاوب */
+@media (max-width: 1200px) {
+    .class-container {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 20px;
+    }
+    
+    .header h1 {
+        font-size: 2em;
+    }
+    
+    .class-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* تحسين تصميم الكود المضغوط */
+.class-container.compact {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px;
+    padding: 10px;
+}
+
+.compact .class-card {
+    font-size: 0.9em;
+    max-width: 280px;
+    margin: auto;
+}
+
+.compact .class-header {
+    padding: 12px;
+}
+
+.compact .class-content {
+    padding: 12px;
+}
+
+.compact .class-card li {
+    padding: 5px 8px;
+    margin-bottom: 5px;
+}
+
+/* تحسين ستايل العلاقات */
+.relationships {
+    margin-top: 15px;
+    padding: 10px;
+    background: rgba(0,0,0,0.02);
+    border-radius: 8px;
+}
+
+.relationship {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.relationship-label {
+    font-size: 0.85em;
+    color: var(--accent-color);
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.cardinality {
+    font-weight: bold;
+    color: var(--primary-color);
+    background: rgba(57, 73, 171, 0.1);
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 0.9em;
+}
+
+/* تحسين توزيع الكروت */
+.class-container.compact {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px;
+}
+
+/* أحجام مصغرة للكروت */
+.compact .class-card {
+    font-size: 0.7em;
+    max-width: 220px;
+    margin: auto;
+    height: fit-content;
+}
+
+/* تموضع الكلاسات */
+#registration-class {
+    grid-column: 2;
+    grid-row: 1;
+    transform: translateY(0);
+}
+
+#course-class {
+    grid-column: 2;
+    grid-row: 2;
+    transform: translateY(20px);
+}
+
+#student-class {
+    grid-column: 1;
+    grid-row: 2;
+    transform: translate(20px, 20px);
+}
+
+#professor-class {
+    grid-column: 3;
+    grid-row: 2;
+    transform: translate(-20px, 20px);
+}
+
+#catalogue-class {
+    grid-column: 1;
+    grid-row: 3;
+    transform: translate(20px, 10px);
+}
+
+#billing-class {
+    grid-column: 3; 
+    grid-row: 3;
+    transform: translate(-20px, 10px);
+}
+
+/* تحسين خطوط العلاقات */
+.leader-line {
+    z-index: 10;
+}
+
+.relationship-label {
+    font-size: 0.65em;
+    background: white;
+    padding: 3px 8px;
+    border-radius: 12px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    white-space: nowrap;
+}
+
+/* تحسين التجاوب */
+@media (max-width: 1100px) {
+    .class-container.compact {
+        grid-template-columns: repeat(2, 1fr);
+        padding: 20px;
+    }
+
+    .compact .class-card {
+        max-width: 200px;
+    }
+}
+
+@media (max-width: 768px) {
+    .class-container.compact {
+        grid-template-columns: 1fr;
+    }
+    
+    .compact .class-card {
+        max-width: 280px;
+    }
+}

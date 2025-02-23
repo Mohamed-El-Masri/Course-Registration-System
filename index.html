@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Registration System - Mohamed Sameh Ahmed</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1><i class="fas fa-university"></i> Course Registration System</h1>
+            <h2>UML Class Diagram</h2>
+            <div class="author">Designed by: Mohamed Sameh Ahmed</div>
+        </div>
+
+        <div class="class-container compact">
+            <!-- Course Catalogue Class -->
+            <div class="class-card" id="catalogue-class">
+                <div class="class-header">
+                    <i class="fas fa-book-open"></i>
+                    <h3>CourseCatalogue</h3>
+                </div>
+                <div class="class-content">
+                    <div class="attributes">
+                        <h4>Attributes:</h4>
+                        <ul>
+                            <li><span class="visibility-icon">-</span> semester: String</li>
+                            <li><span class="visibility-icon">-</span> listOfCourses: List&lt;Course&gt;</li>
+                        </ul>
+                    </div>
+                    <div class="methods">
+                        <h4>Methods:</h4>
+                        <ul>
+                            <li><span class="visibility-icon">+</span> getCourseList(): List&lt;Course&gt;</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Student Class with Fixed Relationship -->
+            <div class="class-card" id="student-class">
+                <div class="class-header">
+                    <i class="fas fa-user-graduate"></i>
+                    <h3>Student</h3>
+                </div>
+                <div class="class-content">
+                    <div class="attributes">
+                        <h4>Attributes:</h4>
+                        <ul>
+                            <li><span class="visibility-icon">-</span> studentID: String</li>
+                            <li><span class="visibility-icon">-</span> name: String</li>
+                            <li><span class="visibility-icon">-</span> email: String</li>
+                            <li><span class="visibility-icon">-</span> department: String</li>
+                        </ul>
+                    </div>
+                    <div class="methods">
+                        <h4>Methods:</h4>
+                        <ul>
+                            <li><span class="visibility-icon">+</span> requestCatalogue(): void</li>
+                            <li><span class="visibility-icon">+</span> selectCourses(courses: List&lt;Course&gt;, alternatives: List&lt;Course&gt;): void</li>
+                            <li><span class="visibility-icon">+</span> addCourse(course: Course): void</li>
+                            <li><span class="visibility-icon">+</span> dropCourse(course: Course): void</li>
+                        </ul>
+                    </div>
+                    <div class="relationships">
+                        <div class="relationship" data-connects-to="course-class">
+                            <span class="relationship-label">
+                                <span class="cardinality">1</span>
+                                enrolls in
+                                <span class="cardinality">0..*</span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Course Class -->
+            <div class="class-card" id="course-class">
+                <div class="class-header">
+                    <i class="fas fa-book"></i>
+                    <h3>Course</h3>
+                </div>
+                <div class="class-content">
+                    <div class="attributes">
+                        <h4>Attributes:</h4>
+                        <ul>
+                            <li><span class="visibility-icon">-</span> courseID: String</li>
+                            <li><span class="visibility-icon">-</span> courseName: String</li>
+                            <li><span class="visibility-icon">-</span> department: String</li>
+                            <li><span class="visibility-icon">-</span> professor: Professor</li>
+                            <li><span class="visibility-icon">-</span> prerequisites: List&lt;Course&gt;</li>
+                            <li><span class="visibility-icon">-</span> enrollmentLimit: int</li>
+                            <li><span class="visibility-icon">-</span> currentEnrollment: int</li>
+                        </ul>
+                    </div>
+                    <div class="methods">
+                        <h4>Methods:</h4>
+                        <ul>
+                            <li><span class="visibility-icon">+</span> checkPrerequisites(student: Student): boolean</li>
+                            <li><span class="visibility-icon">+</span> addStudent(student: Student): void</li>
+                            <li><span class="visibility-icon">+</span> removeStudent(student: Student): void</li>
+                            <li><span class="visibility-icon">+</span> isFull(): boolean</li>
+                            <li><span class="visibility-icon">+</span> isCanceled(): boolean</li>
+                        </ul>
+                    </div>
+                    <div class="constraints">
+                        <h4>Constraints:</h4>
+                        <p>3 ≤ enrolledStudents.size() ≤ 10</p>
+                        <p>if enrolledStudents.size() < 3 then status = CANCELLED</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Professor Class -->
+            <div class="class-card" id="professor-class">
+                <div class="class-header">
+                    <i class="fas fa-chalkboard-teacher"></i>
+                    <h3>Professor</h3>
+                </div>
+                <div class="class-content">
+                    <div class="attributes">
+                        <h4>Attributes:</h4>
+                        <ul>
+                            <li><span class="visibility-icon">-</span> professorID: String</li>
+                            <li><span class="visibility-icon">-</span> name: String</li>
+                            <li><span class="visibility-icon">-</span> department: String</li>
+                            <li><span class="visibility-icon">-</span> email: String</li>
+                        </ul>
+                    </div>
+                    <div class="methods">
+                        <h4>Methods:</h4>
+                        <ul>
+                            <li><span class="visibility-icon">+</span> assignCourse(course: Course): void</li>
+                            <li><span class="visibility-icon">+</span> viewEnrolledStudents(course: Course): List&lt;Student&gt;</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Registration System Class -->
+            <div class="class-card" id="registration-class">
+                <div class="class-header">
+                    <i class="fas fa-clipboard-check"></i>
+                    <h3>Registration System</h3>
+                </div>
+                <div class="class-content">
+                    <div class="attributes">
+                        <h4>Attributes:</h4>
+                        <ul>
+                            <li><span class="visibility-icon">-</span> semester: String</li>
+                            <li><span class="visibility-icon">-</span> listOfStudents: List&lt;Student&gt;</li>
+                            <li><span class="visibility-icon">-</span> listOfCourses: List&lt;Course&gt;</li>
+                        </ul>
+                    </div>
+                    <div class="methods">
+                        <h4>Methods:</h4>
+                        <ul>
+                            <li><span class="visibility-icon">+</span> registerStudent(student: Student, courses: List&lt;Course&gt;, alternatives: List&lt;Course&gt;): void</li>
+                            <li><span class="visibility-icon">+</span> updateBillingSystem(student: Student): void</li>
+                            <li><span class="visibility-icon">+</span> cancelCourse(course: Course): void</li>
+                            <li><span class="visibility-icon">+</span> validateEnrollment(course: Course): boolean</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Billing System Class with Complete Structure -->
+            <div class="class-card" id="billing-class">
+                <div class="class-header">
+                    <i class="fas fa-file-invoice-dollar"></i>
+                    <h3>Billing System</h3>
+                </div>
+                <div class="class-content">
+                    <div class="attributes">
+                        <h4>Attributes:</h4>
+                        <ul>
+                            <li><span class="visibility-icon">-</span> studentID: String</li>
+                            <li><span class="visibility-icon">-</span> totalFee: double</li>
+                            <li><span class="visibility-icon">-</span> semester: String</li>
+                        </ul>
+                    </div>
+                    <div class="methods">
+                        <h4>Methods:</h4>
+                        <ul>
+                            <li><span class="visibility-icon">+</span> generateBill(student: Student): void</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="diagram-footer">
+            <p>© 2024 Mohamed Sameh Ahmed - Course Registration System</p>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leader-line/1.0.7/leader-line.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // تكوين العلاقات المحسنة
+            const relationships = [
+                // علاقات النظام الأساسية
+                {
+                    start: 'registration-class',
+                    end: 'course-class',
+                    label: 'manages',
+                    color: '#3949ab',
+                    path: 'straight',
+                    size: 1.2,
+                    startSocket: 'bottom',
+                    endSocket: 'top'
+                },
+                {
+                    start: 'registration-class',
+                    end: 'student-class',
+                    label: 'manages',
+                    color: '#3949ab',
+                    path: 'grid',
+                    startSocket: 'bottom',
+                    endSocket: 'right'
+                },
+                {
+                    start: 'registration-class',
+                    end: 'professor-class',
+                    label: 'manages',
+                    color: '#3949ab',
+                    path: 'grid',
+                    startSocket: 'bottom',
+                    endSocket: 'left'
+                },
+                // علاقات المقررات
+                {
+                    start: 'course-class',
+                    end: 'catalogue-class',
+                    label: 'listed in',
+                    color: '#2196f3',
+                    path: 'grid',
+                    startSocket: 'left',
+                    endSocket: 'top'
+                },
+                {
+                    start: 'course-class',
+                    end: 'professor-class',
+                    label: 'taught by',
+                    color: '#2196f3',
+                    path: 'straight',
+                    startSocket: 'right',
+                    endSocket: 'left'
+                },
+                // علاقات الطلاب
+                {
+                    start: 'student-class',
+                    end: 'course-class',
+                    label: 'enrolls in',
+                    color: '#4caf50',
+                    path: 'grid',
+                    startSocket: 'right',
+                    endSocket: 'left'
+                },
+                {
+                    start: 'student-class',
+                    end: 'billing-class',
+                    label: 'billed through',
+                    color: '#ff9800',
+                    path: 'grid',
+                    startSocket: 'bottom',
+                    endSocket: 'top'
+                }
+            ];
+
+            // رسم الخطوط مع التأثيرات المتحركة
+            relationships.forEach(rel => {
+                new LeaderLine(
+                    document.getElementById(rel.start),
+                    document.getElementById(rel.end),
+                    {
+                        color: rel.color,
+                        size: rel.size || 1,
+                        path: rel.path,
+                        startSocket: rel.startSocket,
+                        endSocket: rel.endSocket,
+                        startPlug: 'behind',
+                        endPlug: 'arrow2',
+                        middleLabel: LeaderLine.pathLabel(rel.label),
+                        gradient: true,
+                        dropShadow: { blur: 2, color: 'rgba(0,0,0,0.2)' },
+                        dash: { animation: true },
+                        endPlugSize: 0.8,
+                        startSocketGravity: 80,
+                        endSocketGravity: 80
+                    }
+                );
+            });
+
+            // تحسين التجاوب مع تغيير حجم النافذة
+            let timeout;
+            window.addEventListener('resize', () => {
+                clearTimeout(timeout);
+                timeout = setTimeout(() => {
+                    document.querySelectorAll('.leader-line').forEach(line => {
+                        line.position();
+                    });
+                }, 100);
+            });
+        });
+    </script>
+</body>
+</html>
